@@ -1,0 +1,6 @@
+[book]
+authors = ["Carson Swoveland"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Teaching Build Your Own Breadboard Computer"
