@@ -4,9 +4,45 @@
 
 ### Logic Gates
 
-| A    | Foobar |
+| A    | NOT A  |
 |------|--------|
 | abcd | bcdfds |
+
+### Designing Some Logic
+
+Let's say we wanted to implement the following truth table with some logic gates
+(where `Q` means our desired output):
+
+| A | B | Q |
+|---|---|---|
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 1 |
+| 1 | 1 | 0 |
+
+After some contemplation, we could probably deduce that `Q` looks like `A AND NOT B`.
+So, if we have some AND gates and some NOT gates laying around, we might implement this as:
+
+![Gate implementation of A and not B](images/a_and_not_b_1.png)
+
+However, this is rather inconvenient.
+We'd need to wire up two separate kinds of gate (NOT and AND) to do this very simple function.
+Furthermore, most logic gate chips come with four or more gates on them,
+and the unused gates take up space on the breadboard even if we're not using them.
+
+Let's make some modifications.
+First of all, we can recognize that, because AND and NAND are just inverses of each other,
+we can replace the AND gate with a NAND followed by a NOT:
+
+![Modified implementation of A and not B](images/a_and_not_b_2.png)
+
+Then, we can also replace the NOT gates with NAND gates:
+
+![Final implementation of A and not B](images/a_and_not_b_3.png)
+
+And now we've successfully reduced our logic to only need one kind of gate,
+and since the NAND gate IC we'll be using offers four NAND gates per chip,
+we only need to use one chip.
 
 ### Theory & Practice
 
@@ -14,11 +50,12 @@ When designing or analyzing the behavior of a digital circuit,
 keeping extraneous details hidden and keeping wires organized is a good thing.
 This is why typically we draw circuits as a **schematic**,
 where we use component **symbols** to represent the pieces of the circuit.
+The diagrams of the logic gates we used above were schematics.
 
 However, when we go to actually build the circuit using the materials at hand, a number of problems appear.
-Most notably: our integrated circuit (IC, or simply "chip") doesn't really look much like a NAND gate!
+Most notably: our integrated circuit (IC) doesn't really look much like a NAND gate!
 
-TODO: Image here!
+![Picture of the SN74HC00](images/sn74hc00.png)
 
 To understand the problem, we need to read the **datasheet** for our IC.
 In this case, we're using the 74HC00, whose datasheet is available on [Texas Instruments's Website](https://www.ti.com/lit/ds/symlink/sn74hc00.pdf).
@@ -48,22 +85,42 @@ This has resulted in a several possible notations for the power pins on ICs, whi
 Any time any of the above pins appears on an IC's datasheet,
 you should always make sure that you remember to connect them to the appropriate power supply.
 
-### Floating Logic
+### Logic Levels 
 
-_In theory_, any wire in a circuit should always be either HIGH, or LOW.
+Up until now we've been discussing logic in terms of 1 and 0, but we all know that math isn't real.
+You can't send a number across a wire–you send a **voltage**!
+
+If we charge a wire to a HIGH voltage (in our case, above about 4.5V), we usually *interpret* that wire as meaning "1".
+
+If we charge a wire to a LOW voltage (in our case, below about 0.5V), we usually *interpret* that wire as meaning "0".
+
+Any voltage in-between HIGH and LOW is meaningless,
+and most gates aren't designed to work correctly with voltages in the middle.
+
+Often, HIGH=1 and LOW=0 is good enough, but we'll encounter some situations later on where the meaning of "1" and "0"
+isn't clear, and so we'll use HIGH and LOW from now on and develop some better words to describe the meaning of signals later.
+
+For the purposes of this class, we will assume that a HIGH signal means the same thing as 5V,
+and assume that a LOW signal means the same thing as 0V.
+
+### Floating Wires
+
+In theory, any wire in a circuit should always be either HIGH, or LOW.
 This is because we try to design our circuits so that all the wires are always
 "driven" (strongly) or "pulled" (weakly) to be HIGH or LOW.
 
 For example, if a wire is connected directly to the 5V/GND rail,
 we say that it is *driven* (or sometimes "tied", since it's just a wire) HIGH/LOW.
-All logic gates drive signals (i.e. they are strong outputs) unless specifically noted otherwise.
+
+The *output* of a logic gate is always strong, so it drives signals, unless specifically noted otherwise.
 
 If a wire is connected to (for example) the 5V/GND rail through a resistor,
 we say that it is *pulled* HIGH/LOW.
+By itself, this behaves the same as driving the wire HIGH/LOW;
+but the distinction becomes important later when we start mixing driving and pulling.
 
 The diagram below shows an example setup.
 Wire A is being driven HIGH, wire B is being pulled LOW, and wire C is being driven HIGH.
-For now, the distinction between driving and pulling a signal is not important, but it will come up later.
 
 ![High, low, and floating signals](images/high_low_floating.png)
 
@@ -85,6 +142,19 @@ TODO: Why do floating wires behave so erratically?
 
 ### The Probe
 
+Unfortunately, tools like multimeters are ill-suited to finding out if a wire is floating.
+If you try to measure a floating wire's voltage with a multimeter,
+it will often say 0V due to imperfections inside the meter–in other words, we can't distinguish LOW and floating!
+
+Fortunately, you have another means of checking your wires for floatiness: the probe.
+When the green light is on, the signal is HIGH.
+When the red light is on, the signal is LOW.
+If both lights or neither light is on, or the lights are dim, the signal is floating.
+
+TODO: Insert image
+
+The #1 cause of inconsistent behavior in breadboard circuits is because of floating wires,
+so always make sure you poke your wires and ensure they are being driven!
 
 ## Hands-On Section
 
@@ -120,7 +190,8 @@ that are directly straddling the gap in the center. If the pins are bent too far
 try gently rolling the NAND gate against the table on both sides evenly to bend the pins closer together.
 
 **Pinouts** - The [74HC00 datasheet](https://www.ti.com/lit/ds/symlink/sn74hc00.pdf)
-shows how the NAND gates are connected. Note that the side of the chip with the indent is always the top.
+shows how the NAND gates are laid out inside the chip.
+Note that the side of the chip with the indent is always the top.
 
 **Logic Inputs** - The A and B inputs should always be connected to either 5V or GND, never floating.
 
