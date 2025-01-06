@@ -1,4 +1,4 @@
-# The NOP Computer
+# L2 - The NOP Computer
 
 ### Notation
 
