@@ -1,7 +1,7 @@
 # Summary
 
 - [Overview](./overview.md)
-- [Course Logistics](./logistics.md)
+- [Teaching and Logistics](./teaching.md)
 
 # Lectures
 

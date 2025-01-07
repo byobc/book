@@ -1,12 +1,32 @@
 # L1 - Electronics Refresher
 
+In this chapter,
+we'll be covering the basics of logic gates,
+the fundamentals of digital signals,
+and building a logic circuit on a breadboard.
+
+Don't skip this chapter too hastily–
+it's essential to understanding how to modify and fix your computer!
+
 ## Lecture 
 
 ### Logic Gates
 
+All of modern computing is predicated on the **bit**,
+a single unit of information that can only ever be either 0 or 1.
+
+By itself, a single bit doesn't do much.
+The power of computers comes when we combine bits together
+and do operations on them using **logic gates**.
+
+The simplest gate (aside from the gate that does nothing) is the **NOT** gate, or inverter.
+
 | A    | NOT A  |
 |------|--------|
-| abcd | bcdfds |
+| 0    | 1      |
+| 1    | 0      |
+
+TODO: The rest of the gates
 
 ### Designing Some Logic
 

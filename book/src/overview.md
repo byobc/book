@@ -1,13 +1,14 @@
 # Overview
 
 Hello!
-
-This is the lesson plan for **Build Your Own Breadboard Computer (BYOBC)**.
+This is the **Build Your Own Breadboard Computer (BYOBC) Book**!
 
 BYOBC is a framework for learning **how computer systems work**,
 by building one from individual components.
 
-By the end of the course, students should understand:
+If you're looking to teach this course, see [Teaching](teaching.md).
+
+By the end of this book, you should intuitively understand:
 - The fetch/decode/execute loop
 - Address and data buses
 - Timing constraints
@@ -17,22 +18,27 @@ By the end of the course, students should understand:
 - Serial communication with UART
 - Basic 6502 assembly programming
 
-Though the 80 minute per week format does not have time for it,
-the class naturally could be extended to other topics like:
-- PCB design
-- Modern microcontroller design
-- $TODO$
+And you will have a computer that might look something like this
+(though whether it looks cleaner than this is up to you!):
 
-## Course Design Choices
+![An example computer](images/computer.png)
 
-why did i use the 6502?
-why breadboards?
+## Prior Experience
 
-## Can I teach BYOBC?
+If all of the above topics sounded like a lot, don't panic!
+This course is intended to be accessible even to electronics beginners.
+You'll be fine if you have experience with the following:
 
-## Core Goals
+- Basic breadboard usage
+- Any programming language (though lower-level is better)
 
-BYOBC is centered around two guiding principles:
-**accessibility** and **justification**.
+More than anything else the biggest keys to success are patience, cleanliness, and debugging skills.
+We'll have tips on how to organize your computer and diagnose issues later!
 
-### Accessibility
+## Materials
+
+If you're taking this as part of the 98-341 StuCo at Carnegie Mellon University,
+then good news! The materials will be provided.
+
+If not, stay tuned for ways to participate at home.
+TODO: Materials listing.
