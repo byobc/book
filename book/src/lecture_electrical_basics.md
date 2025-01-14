@@ -10,6 +10,8 @@ it's essential to understanding how to modify and fix your computer!
 
 ## Lecture 
 
+[Lecture slides](https://docs.google.com/presentation/d/15Mj2Q8XHWYfoa-bLAZE773oLuaPgVtdR3F_EtsCquoQ/edit?usp=sharing)
+
 ### Logic Gates
 
 All of modern computing is predicated on the **bit**,
@@ -110,15 +112,16 @@ you should always make sure that you remember to connect them to the appropriate
 Up until now we've been discussing logic in terms of 1 and 0, but we all know that math isn't real.
 You can't send a number across a wire–you send a **voltage**!
 
-If we charge a wire to a HIGH voltage (in our case, above about 4.5V), we usually *interpret* that wire as meaning "1".
+If we charge a wire to a HIGH voltage (in our case, above about 4.5V), we *interpret* that wire as meaning "1".
 
-If we charge a wire to a LOW voltage (in our case, below about 0.5V), we usually *interpret* that wire as meaning "0".
+If we charge a wire to a LOW voltage (in our case, below about 0.5V), we *interpret* that wire as meaning "0".
 
 Any voltage in-between HIGH and LOW is meaningless,
 and most gates aren't designed to work correctly with voltages in the middle.
 
-Often, HIGH=1 and LOW=0 is good enough, but we'll encounter some situations later on where the meaning of "1" and "0"
-isn't clear, and so we'll use HIGH and LOW from now on and develop some better words to describe the meaning of signals later.
+When dealing with abstract logic gates, it's much more common to use the 1/0 notation.
+When we're looking at voltages in a circuit, however, using HIGH/LOW
+is useful as a reminder that we're in the real world.
 
 For the purposes of this class, we will assume that a HIGH signal means the same thing as 5V,
 and assume that a LOW signal means the same thing as 0V.
@@ -153,12 +156,6 @@ Not only does this produce difficult-to-debug issues,
 but many logic gates will heat up and destroy themselves if they receive an input halfway between HIGH and LOW for too long.
 
 In other words: wire's haunted.
-
-<div class="warning">
-
-TODO: Why do floating wires behave so erratically?
-
-</div>
 
 ### The Probe
 
