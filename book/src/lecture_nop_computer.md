@@ -1,5 +1,9 @@
 # L2 - The NOP Computer
 
+Today we're going to discuss the very basics of what a "program" really is,
+see how a CPU can execute programs,
+and finally make our CPU run the very simplest program we can possibly run.
+
 ### Notation
 
 The original version of the 6502 was released in 1975,
@@ -20,23 +24,46 @@ so this book will omit the `$` for cases where there is no ambiguity.
 
 ### A Computer
 
-what's a computer?
+As discussed last time, we defined a computer as a thing that can run programs,
+where the program is simply a list of steps, or **instructions**.
+In our case, the instructions are just a list of bytes.
+
+The very basics of a computer, then, can be boiled down into two parts:
+one part that contains the instructions to run, and another part that actually runs the instructions.
+
+The part of the computer that actually runs the instructions is the
+**central processing unit**, or **CPU**.
+You likely already have heard of many varieties of CPU,
+made by Intel, AMD, Apple, Qualcomm, etc.
+It's important to note that a CPU by itself doesn't constitute a computer–
+without instructions to run, it can't do anything!
+
+So our basic model of the computer starts out as two boxes:
+A CPU to run instructions, and storage to hold the instructions.
+
+TODO: Insert diagram here
 
 ### The Data Bus
 
-We've established that the CPU doesn't have enough space to store the whole program itself,
-and the program must reside in some external storage.
-Thus, somehow, the bytes of the program need to go from the storage into the CPU.
+A possibly-obvious problem with the two-box model is that our two boxes
+aren't connected in any way.
+Somehow, a series of instruction bytes in the storage
+need to make their way over to the CPU so that they can actually be run.
+Fortunately, we invented a convenient way to move information very quickly back in the 1800s:
+just connect the two boxes with some wires!
 
-Moving the bytes is done quite simply by using eight wires, one for each bit in a byte.
+In our case, we use **eight wires** to connect the storage and the CPU,
+one for each bit in a byte.
 This collection of eight wires is called the **data bus**,
 and it can transfer a single byte of data at a time to or from the CPU.
+Every instruction the CPU will ever execute must, at some point, travel across the data bus.
 
 TODO: Diagram
 
 ### The Address Bus
 
-The simple setup with just a data bus has a problem:
+With the addition of a data bus, our CPU can now retrieve instruction bytes from the storage.
+However, there's a problem:
 how does the storage know which byte it should be sending?
 
 Consider the following pseudocode:
@@ -51,12 +78,12 @@ If the coin flip is heads, we need to be able to send over the bytes that will e
 but if the coin flip is tails, we need to send over a different set of bytes that will execute `print "goodbye"`,
 and only the CPU knows which path is correct.
 
-Thus, the CPU needs to be able to tell the storage what part of the program it wants next,
-and this is done with a group of sixteen wires called the **address bus**.
+Thus, the CPU needs to be able to tell the storage what part of the program it wants next.
+This is done with a group of sixteen wires called the **address bus**.
 Unlike the data bus, which can sometimes be bidirectional, the address bus is always driven by the CPU.
 
 For storage devices, the address bus is very similar to an array index.
-The storage device will look at the address bus, and it will place on the data bus whichever byte
+The storage device will look at the address bus, and it will place on the data bus whichever byte is at that location/index.
 If `$0000` is driven on the address bus, the very first byte in the storage will eventually appear on the data bus.
 If `$0001` is driven on the address bus, the next byte of storage will eventually appear on the data bus, and so on.
 
@@ -104,10 +131,76 @@ TODO:
 
 ## Hands-On Section
 
-### Assignment
+### Build
 
-TODO: Schematic
+![NOP Computer Schematic](schematics/nop.svg)
 
-TODO: Actual work
+![NOP Computer Picture](schematics/nop_board.png)
 
-TODO: etc
+Build the above schematic on the breadboard.
+An example board is provided for your reference.
+
+Keep in mind that clean wiring solves most computer problems!
+
+### Debugger Usage
+
+To test our circuit, we can use the debugger.
+You'll need to download the [debugger repository](https://github.com/SuperTails/byobc-debugger),
+and run a command inside:
+
+```
+python ./console/debugger.py debug
+```
+
+You may need to use `python3` instead of `python`,
+and you may need to specify the serial port with `--port`.
+
+Once the debugger has started, the interface will look like the following:
+```
+RST
+PC: 0000  A: 00 X: 00 Y: 00 P: 24 S: 00 seq_cycle: 1
+ADDR: 0000
+DATA:   EA
+STATUS: sync:0 rwb:1 (R) RESB:0 nmib:1 irqb:1 vpb:1    |   PHI2: 0
+
+> 
+```
+
+From top to bottom:
+
+- `RST` indicates that the 6502 is currently being reset.
+- `PC` indicates the value of the Program Counter. The values beside it indicate other registers.
+- `ADDR` shows the current state of the address bus
+- `DATA` shows the current state of the data bus
+- The pin names on the `STATUS` line all correspond to identically-named pins on the processor.
+
+Take note of the value of PHI2 (the clock) currently.
+We can advance by half of a cycle (i.e. from low to high or high to low)
+using the `h`alfcycle command.
+Type `h` and press enter.
+Observe that PHI2 changes.
+
+The halfcycle command is useful,
+but often halfcycles are too short--
+most interesting behavior happens after a complete clock cycle.
+The c`y`cle command advances PHI2 to the next time it will be high,
+because not much happens when PHI2 is low.
+Type `y` and press enter.
+Some of the other values might change
+because we've just stepped one clock cycle forward.
+
+We'd like to step a few more cycles now.
+We could type `y` again, but there's a convenient shortcut:
+pressing enter with nothing at the prompt will rerun the last command.
+Press enter repeatedly to step and observe the `sync` signal.
+As soon as it becomes 1, stop:
+we're about to fetch our very first instruction.
+
+Observe the value of the address and data buses.
+The data bus should show `EA`
+(since, after all, that's how you connected the wires).
+
+Step a few cycles and observe how the address bus and the sync pin change.
+Based on this, how many cycles does the `NOP` instruction require?
+
+Once you're done, use the `q`uit command to exit.
