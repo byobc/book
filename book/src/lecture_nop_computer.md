@@ -1,5 +1,7 @@
 # L2 - The NOP Computer
 
+[Lecture Slides](https://docs.google.com/presentation/d/15Mj2Q8XHWYfoa-bLAZE773oLuaPgVtdR3F_EtsCquoQ/edit?usp=sharing)
+
 Today we're going to discuss the very basics of what a "program" really is,
 see how a CPU can execute programs,
 and finally make our CPU run the very simplest program we can possibly run.
