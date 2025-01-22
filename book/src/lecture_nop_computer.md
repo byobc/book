@@ -1,6 +1,7 @@
 # L2 - The NOP Computer
 
-[Lecture Slides](https://docs.google.com/presentation/d/15Mj2Q8XHWYfoa-bLAZE773oLuaPgVtdR3F_EtsCquoQ/edit?usp=sharing)
+[Lecture Slides](https://docs.google.com/presentation/d/1g9Iwo7UGvAC2j5ET3NqOM1HMwSs-NftbdSZZpANnzIM/edit?usp=sharing)
+
 
 Today we're going to discuss the very basics of what a "program" really is,
 see how a CPU can execute programs,
