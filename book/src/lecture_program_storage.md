@@ -1,6 +1,13 @@
 # L3 - Program Storage
 
+[Lecture slides link](https://docs.google.com/presentation/d/1ezitCzSXidf775YnaB2gy3CmUpMCwCwRfUXBa4HJ02E/edit?usp=sharing)
+
 ## Lecture
+
+This time we're going to be reviewing
+what really happened when our computer ran the NOP instructions last time,
+and move on to providing a real storage medium for the computer
+to hold more interesting programs.
 
 ### NOP Computer Recap
 
@@ -273,4 +280,59 @@ To summarize:
 
 ### Schematic
 
-### Using the Debugger
+![Schematic for the computer with flash](schematics/flash.svg)
+
+![Reference board, wires removed](schematics/flash_no_wires.jpg)
+
+![Reference board](schematics/flash_board.jpg)
+
+Build the above schematic on the breadboard.
+The reference images show the board with and without the data bus to be easier to see.
+
+### Deploying Code
+
+Make sure you pull the latest version of the debugger repository
+or redownload it before you begin, or else there may be some missing files!
+
+In order to assemble and upload code,
+you'll need to make sure you have an assembler (DASM) installed.
+The `install_windows`/`install_macos`/`install_linux` scripts should do this for you automatically.
+
+To deploy some code, invoke the debugger as you did in the previous assignment but with the deploy subcommand:
+
+```
+python3 console/debugger.py deploy starter-code/cursed_fibonacci.S
+```
+
+If you get a data mismatch error, there's very likely a problem with your wiring.
+Visually inspect that everything is plugged in.
+
+If it still doesn't work, then you should try using THE PROBE.
+Start the debugger as if you were going to step through a program.
+Use the `y` command until the processor finishes resetting (the `RST` label goes away).
+This will stop the processor in the middle of trying to read the flash,
+at which point you can check that all the signals are correct for a read.
+Check:
+
+- The flash's VDD and GND pins
+- The flash's CE#, WE#, and OE# pins to ensure they're LOW, HIGH, and LOW respectively.
+- The flash's address lines to make sure they line up with what's shown on the address bus.
+- The flash's data lines to make sure they show `$FF` (which is the default, erased state)
+
+This will nearly always fix the flash. If not, you may have swapped some of the wires.
+In particular, the data lines are very easy to accidentally get backwards.
+
+### Testing the Flash
+
+If you've succeessfully deployed `cursed-fibonacci.S`, congratulations!
+The computer will almost certainly work.
+
+Start the debugger in `debug` mode to test out the program.
+We're not really concerned about individual cycles here,
+so you can use the `s`tep command to go forward by one whole instruction at a time.
+
+Watch the value of the `A` register (which we haven't discussed yet).
+About every 7 instructions, the `A` register should show a new number in the Fibonacci sequence:
+0, 1, 1, 2, 3, 5, 8, etc.
+
+If you see the Fibonacci sequence, you have a fully functioning means of storing programs!
