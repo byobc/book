@@ -220,6 +220,18 @@ This means that we've just accidentally written to the wrong address!
 
 ### Fixing the Writing Problem
 
+In order to prevent spurious writes,
+we need to make sure that we don't allow the RAM
+to ever be written until we're sure the address lines are ready.
+
+The only period where the address lines might be unstable
+is right after the clock has just changed from high to low.
+Thus, if we wait until the clock goes from low to high,
+we'll give all the wires enough time to settle into a final state.
+
+In other words, the solution is:
+Only enable SRAM writing when PHI2 is high!
+
 
 ## Hands-On
 
