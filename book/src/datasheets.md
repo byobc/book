@@ -8,3 +8,5 @@ In this chapter are the datasheets for the various devices used for the computer
 The correct pinout is the **PDIP** version on page 3.
 This datasheet contains information for three variations of the flash chip;
 we are using the smallest size, so pin 1 and pin 30 are both NC.
+
+[AS6C62256 32K x 8 bit SRAM](https://www.mouser.com/datasheet/2/12/AS6C62256_23_March_2016_rev1_2-1288423.pdf)
