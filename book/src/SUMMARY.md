@@ -9,6 +9,7 @@
 - [L2 - The NOP Computer](./lecture_nop_computer.md)
 - [L3 - Program Storage](./lecture_program_storage.md)
 - [L4 - Downloading More RAM](./lecture_sram.md)
+- [L5 - Assembly Basics](./lecture_asm_1.md)
 
 # Resources
 
