@@ -10,6 +10,7 @@
 - [L3 - Program Storage](./lecture_program_storage.md)
 - [L4 - Downloading More RAM](./lecture_sram.md)
 - [L5 - Assembly Basics](./lecture_asm_1.md)
+- [L6 - Advanced Assembly](./lecture_asm_2.md)
 
 # Resources
 
