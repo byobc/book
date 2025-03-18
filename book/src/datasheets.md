@@ -10,3 +10,10 @@ This datasheet contains information for three variations of the flash chip;
 we are using the smallest size, so pin 1 and pin 30 are both NC.
 
 [AS6C62256 32K x 8 bit SRAM](https://www.mouser.com/datasheet/2/12/AS6C62256_23_March_2016_rev1_2-1288423.pdf)
+
+[W65C22](https://eater.net/datasheets/w65c22.pdf)
+The pinout is all the way down on page 28.
+
+[HD44780U (LCD Display Driver)](https://cdn.sparkfun.com/assets/9/5/f/7/b/HD44780.pdf)
+The table of commands is on pages 23-25.
+Table 11 on page 40 also has an interesting sequence of example commands that may be useful.
