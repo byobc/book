@@ -17,3 +17,6 @@ The pinout is all the way down on page 28.
 [HD44780U (LCD Display Driver)](https://cdn.sparkfun.com/assets/9/5/f/7/b/HD44780.pdf)
 The table of commands is on pages 23-25.
 Table 11 on page 40 also has an interesting sequence of example commands that may be useful.
+
+[W65C51N ACIA](https://www.westerndesigncenter.com/wdc/documentation/w65c51n.pdf)
+The pinout is on page 6.
