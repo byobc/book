@@ -13,6 +13,7 @@
 - [L6 - Advanced Assembly](./lecture_asm_2.md)
 - [L7 - Blinking an LED](./lecture_mmio.md)
 - [L8 - Hello, World!](./lecture_lcd.md)
+- [L9 - Serial Communication](./lecture_serial.md)
 
 # Resources
 
