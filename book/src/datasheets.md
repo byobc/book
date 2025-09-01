@@ -20,3 +20,6 @@ Table 11 on page 40 also has an interesting sequence of example commands that ma
 
 [W65C51N ACIA](https://www.westerndesigncenter.com/wdc/documentation/w65c51n.pdf)
 The pinout is on page 6.
+
+[DS1813 Reset Supervisor](https://www.analog.com/media/en/technical-documentation/data-sheets/ds1813.pdf)
+The pinout is on page 1 and the application example is on page 2.
