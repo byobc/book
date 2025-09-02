@@ -4,6 +4,9 @@ In this chapter are the datasheets for the various devices used for the computer
 
 [74HC00 Quadruple 2-Input NAND Gate](https://www.ti.com/lit/ds/symlink/sn74hc00.pdf).
 
+[W65C02S Microprocessor](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf)
+The pinout is the **PDIP** version on page 13.
+
 [SST39SF010A 1-Mbit Multi-Purpose Flash](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/ProductDocuments/DataSheets/SST39SF010A-SST39SF020A-SST39SF040-Data-Sheet-DS20005022.pdf).
 The correct pinout is the **PDIP** version on page 3.
 This datasheet contains information for three variations of the flash chip;
@@ -20,3 +23,6 @@ Table 11 on page 40 also has an interesting sequence of example commands that ma
 
 [W65C51N ACIA](https://www.westerndesigncenter.com/wdc/documentation/w65c51n.pdf)
 The pinout is on page 6.
+
+[DS1813 Reset Supervisor](https://www.analog.com/media/en/technical-documentation/data-sheets/ds1813.pdf)
+The pinout is on page 1 and the application example is on page 2.
