@@ -16,6 +16,7 @@
 - [L9 - Serial Communication](./lecture_serial.md)
 - [L10 - Interrupts](./lecture_interrupts.md)
 - [L11 - "Modern" Computer Architecture](./lecture_modern_comparch.md)
+- [L12 - "Finishing" the Computer](./lecture_wrap_up.md)
 
 # Resources
 

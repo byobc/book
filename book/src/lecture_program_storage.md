@@ -317,6 +317,7 @@ Check:
 - The flash's VDD and GND pins
 - The flash's CE#, WE#, and OE# pins to ensure they're LOW, HIGH, and LOW respectively.
 - The flash's address lines to make sure they line up with what's shown on the address bus.
+- The flash's other address line **(A16!!!!)** to make sure it's not floating
 - The flash's data lines to make sure they show `$FF` (which is the default, erased state)
 
 This will nearly always fix the flash. If not, you may have swapped some of the wires.
