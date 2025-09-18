@@ -13,4 +13,6 @@ command = "mdbook-wavedrom"
 [output]
 
 [output.html]
+default-theme = "light"
+preferred-dark-theme = "light"
 additional-js = ["wavedrom.min.js", "wavedrome-default.js"]
