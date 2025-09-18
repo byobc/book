@@ -27,6 +27,7 @@ jobs:
         with:
           crate: mdbook-wavedrom
           version: 0.10.0
+          locked: false # bc that version is broken lol
 
       - name: build book
         run: |
