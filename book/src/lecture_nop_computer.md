@@ -149,14 +149,28 @@ Keep in mind that clean wiring solves most computer problems!
 
 To test our circuit, we can use the debugger.
 You'll need to download the [debugger repository](https://github.com/SuperTails/byobc-debugger),
-and run a command inside:
+and run a few commands:
+
+First, navigate into the debugger directory. This will depend on where you downloaded the debugger repository. 
+Run the following command to install the required packages to use the debugger.
+
+MacOS: `./install_macos.sh` \
+Windows: `./install_windows.bat` \
+Linux: `./install_linux.sh` 
+
+Once that has been completed, run the following command to start the debugger. 
 
 ```
 python ./console/debugger.py debug
 ```
 
 You may need to use `python3` instead of `python`,
-and you may need to specify the serial port with `--port`.
+and you may need to specify the serial port with `--port`. To look for ports, follow the steps below based on your operating system:
+
+MacOS: Run `ls /dev/tty*` and look for the line `/dev/tty.usbserial-ABCD` (where ABCD is a 4-digit number). \
+Windows: Open the Device Manager. Under `Ports (COM & LPT)`, look for a connected device like COM*X*, where X is a 1-digit number. \
+Linux: TODO \
+Paste this after `--port` 
 
 Once the debugger has started, the interface will look like the following:
 ```
