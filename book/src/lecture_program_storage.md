@@ -137,6 +137,16 @@ For our purposes, these differences are mostly superficial,
 and flash memory is both much cheaper and has more storage.
 Thus, we will be using the **SST39SF010A** 128KiB flash IC to store our programs.
 
+<div class="warning">
+
+*What's a KiB*? That's short for *kibibyte*: there's a [weird
+disagreement](https://en.wikipedia.org/wiki/Byte#Multiple-byte_units) over
+whether 1 KB (kilobyte) means 1000 bytes like other "kilo" units, or 1024
+bytes (a nice power of 2). "KiB" was invented to unambiguously mean 1024
+bytes.
+
+</div>
+
 ### The SST39SF010A
 
 The flash memory our computer will use is the SST39SF010A, whose
